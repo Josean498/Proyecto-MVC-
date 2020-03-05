@@ -28,7 +28,9 @@
 			</div>
 			<div class="card-body">
 			<?php require_once("template/partials/cabecera.php") ?>
+			<?php if (!empty($_SESSION['id'])): ?>
 				<?php require_once("template/equipos/menubar.php") ?>
+				<?php endif ?>
 				<br>
 		<section>
 			<article>
@@ -38,9 +40,11 @@
 							<?php foreach ($cabecera as $key => $valor): ?>
 							<th><?=$valor?></th>
 							<?php endforeach;?>
+							<?php if (!empty($_SESSION['id'])): ?>
 							<th>
 								Acciones
 							</th>
+							<?php endif ?>
 						</tr>
 					</thead>	
 					<tbody>
@@ -51,10 +55,12 @@
 									<td><?=$value->numPiloto?></td>
 									<td><img src="imagenes/<?=$value->imagen?>" width="40px" height="40px"></td>
 									<td><?=$value->nacionalidad?></td>
+									<?php if (!empty($_SESSION['id'])): ?>
 									<td>
 										<a href="<?= URL ?>equipos/show/<?=$value->id?>" title="Visualizar"><i class="material-icons">visibility</i></a>
 										<a href="<?= URL ?>equipos/edit/<?=$value->id?>" title="Editar"><i class="material-icons">edit</i></a>
 										<a href="<?= URL ?>equipos/delete/<?=$value->id?>"><i class="material-icons">clear</i></a>									</td>
+										<?php endif ?>
 								</tr>
 							<?php endforeach;?>
 					</tbody>			

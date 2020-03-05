@@ -12,11 +12,11 @@
       </li>
 
       <!-- Capa Gestión perfiles -->
-
+      <?php if (!empty($_SESSION['id'])): ?>
       <li class="nav-item">
         <a class="nav-link" href="<?= URL ?>equipos/create">Crear</a>
       </li>
-
+      <?php endif ?>
 
       <!-- Fin capa gestión de perfiles -->
 
