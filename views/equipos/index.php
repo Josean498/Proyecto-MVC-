@@ -55,12 +55,32 @@
 									<td><?=$value->numPiloto?></td>
 									<td><img src="imagenes/<?=$value->imagen?>" width="40px" height="40px"></td>
 									<td><?=$value->nacionalidad?></td>
-									<?php if (!empty($_SESSION['id'])): ?>
+									<?php if (isset($_SESSION['id'])): ?>
+                                                <?php if ($_SESSION['rol_name'] == "Administrador"): ?>
+                                                <td>
+                                                    <a href="<?= URL ?>equipos/show/<?=$value->id?>" title="Visualizar"><i class="material-icons">visibility</i></a>
+                                                    <a href="<?= URL ?>equipos/edit/<?=$value->id?>" title="Editar"><i class="material-icons">edit</i></a>
+                                                    <a href="<?= URL ?>equipos/delete/<?=$value->id?>"><i class="material-icons">clear</i></a>
+                                                </td>
+                                                <?php endif ?>
+                                                <?php if ($_SESSION['rol_name'] == "Editor"): ?>
+                                                <td>
+                                                    <a href="<?= URL ?>equipos/show/<?=$value->id?>" title="Visualizar"><i class="material-icons">visibility</i></a>
+                                                    <a href="<?= URL ?>equipos/edit/<?=$value->id?>" title="Editar"><i class="material-icons">edit</i></a>
+                                                </td>
+                                                <?php endif ?>
+                                                <?php if ($_SESSION['rol_name'] == "Registrado"): ?>
+                                                <td>
+                                                    <a href="<?= URL ?>equipos/show/<?=$value->id?>" title="Visualizar"><i class="material-icons">visibility</i></a>
+                                                </td>
+                                                <?php endif ?>
+                                            <?php endif ?>
+									<!-- <?php if (!empty($_SESSION['id'])): ?>
 									<td>
 										<a href="<?= URL ?>equipos/show/<?=$value->id?>" title="Visualizar"><i class="material-icons">visibility</i></a>
 										<a href="<?= URL ?>equipos/edit/<?=$value->id?>" title="Editar"><i class="material-icons">edit</i></a>
 										<a href="<?= URL ?>equipos/delete/<?=$value->id?>"><i class="material-icons">clear</i></a>									</td>
-										<?php endif ?>
+										<?php endif ?> -->
 								</tr>
 							<?php endforeach;?>
 					</tbody>			

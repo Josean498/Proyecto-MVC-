@@ -289,6 +289,33 @@
             }
     }
 
+    public function ordenar($param = null){
+        $this->view->editar = $this->editar;
+        $this->view->crear = $this->crear;
+        $this->view->borrar = $this->borrar;
+        if (!isset($_SESSION)){
+            session_start();
+        }
+        $equipos = $this->model->ordenar($param);
+        $this->view->datos = $equipos;
+        
+        $this->view->render('equipos/index');
+    }
+
+    public function buscar($param = null){
+        $this->view->editar = $this->editar;
+        $this->view->crear = $this->crear;
+        $this->view->borrar = $this->borrar;
+        if (!isset($_SESSION)){
+            session_start();
+        }
+        $param = $_GET['expresion'];
+        $equipos = $this->model->buscar($param);
+        $this->view->datos = $equipos;
+        
+        $this->view->render('equipos/index');
+    }
+
     public function imprimir_pdf(){
         $pdf = new mi_pdf();
         $pdf->Addpage();
